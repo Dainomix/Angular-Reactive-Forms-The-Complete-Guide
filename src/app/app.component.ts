@@ -25,8 +25,10 @@ export class AppComponent implements OnInit{
     //            , single validator or an array of validator that we want to apply to this control
     //            , potential asynchronous validators)
     this.signupForm = new FormGroup({
-      'username': new FormControl(null, Validators.required),
-      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'userData': new FormGroup({
+        'username': new FormControl(null, Validators.required),
+        'email': new FormControl(null, [Validators.required, Validators.email]),
+      }),
       'gender': new FormControl('male'),
     });
   }

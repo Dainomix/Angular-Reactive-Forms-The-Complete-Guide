@@ -35,20 +35,44 @@ export class AppComponent implements OnInit{
       'hobbies': new FormArray([]),
     });
 
+    /** Reactinv to Status or Value Changes **/
     /* 
      // valueChanges
      this.signupForm.valueChanges.subscribe(
       (value) => console.log(value)
     );
     */
-   this.signupForm.statusChanges.subscribe(
-    (status) => console.log(status)
-  );
+    // StatusChanges
+    this.signupForm.statusChanges.subscribe(
+     (status) => console.log(status)
+    );
+
+    /** Setting and Patching Values **/
+    // Setting Values
+    this.signupForm.setValue({
+      'userData': {
+        'username': 'Max',
+        'email': 'max@test.com'
+      },
+      'gender': 'male',
+      'hobbies': []
+    });
+
+    // Patching Values
+    this.signupForm.patchValue({
+      'userData': {
+        'username': 'Anna'
+      }
+    })
 
   }
 
   onSubmit() {
     console.log(this.signupForm);
+    this.signupForm.reset();
+
+    // If don't want to clear the radio buttons when submit data
+    // Keep in mind: We can pass an object to reset() to reset to specific values!
   }
 
   onAddHobby() {
